@@ -20,15 +20,15 @@ data = []
 # Memcached
 # ================================================================================
 r = redis.StrictRedis(
-	host = "localhost",
+	host = "scc.tiyubt.0001.usw1.cache.amazonaws.com",
 	port = 6379, 
 	db = 0
 )
 
-for key in r.scan_iter():
+for index in r.scan_iter():
 	data.append( {
-		"key": key.decode( "utf-8" ),
-		"value": r.get( key ).decode( "utf-8" ),
+		"key": index.decode( "utf-8" ),
+		"value": r.get( index ).decode( "utf-8" ),
 	} )
 
 # ================================================================================
@@ -36,9 +36,13 @@ for key in r.scan_iter():
 # ================================================================================
 # Redis Local
 # ================================================================================
-r = redis.StrictRedis(
+r2 = redis.StrictRedis(
 	host = "localhost",
 	port = 6379, 
 	db = 0
 )
+
+for item in data:
+	print( item )
+	# r2.set( item.key, item.value )
 # ================================================================================
