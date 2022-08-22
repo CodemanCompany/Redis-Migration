@@ -16,11 +16,6 @@ import redis
 # Variables
 data = []
 
-# r = redis.Redis(
-# 	host = "localhost",
-# 	port = 6379, 
-# 	password = ""
-# )
 r = redis.StrictRedis(
 	host = "localhost",
 	port = 6379, 
@@ -32,7 +27,6 @@ for key in r.scan_iter():
 		"key": key,
 		"value": r.get( key ),
 	} )
-
 
 print( data )
 
