@@ -43,6 +43,6 @@ r2 = redis.StrictRedis(
 )
 
 for item in data:
-	print( item )
-	# r2.set( item.key, item.value )
+	# print( item )
+	r2.set( item[ "key" ], item[ "value" ] )
 # ================================================================================
